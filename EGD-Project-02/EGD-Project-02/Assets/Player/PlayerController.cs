@@ -22,17 +22,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int bulletCap = 3;
     int bulletStock = 0;*/
 
-    Light light;
-    float lightIntensity = 0;
+    /*Light light;
+    float lightIntensity = 0;*/
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         sceneManager = GetComponent<SceneController>();
 
-        light = GetComponentInChildren<Light>();
+        /*light = GetComponentInChildren<Light>();
         lightIntensity = light.intensity;
-        light.intensity = 0;
+        light.intensity = 0;*/
     }
 
     // Start is called before the first frame update

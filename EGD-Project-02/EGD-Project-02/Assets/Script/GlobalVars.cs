@@ -18,7 +18,7 @@ public static class GlobalVars
 
     public static readonly char[][] mapKey =
     {
-        //           1    2    3    4    5    6    7    8    9
+        //           0    1    2    3    4    5    6    7    8
         new char[]{ ' ', ' ', ' ', ' ', ' ', ' ', '□', ' ', ' '},  // 1
         new char[]{ ' ', '□', '□', '□', '□', '□', '■', '□', ' '},  // 2
         new char[]{ '□', '■', '■', '■', '■', '■', '□', '■', '□'},  // 3
@@ -26,9 +26,29 @@ public static class GlobalVars
         new char[]{ ' ', '□', ' ', '□', ' ', ' ', '□', ' ', ' '},  // 5
     };
 
+    public static readonly char[][] mapTestRayCast =
+    {
+        //           0    1    2    3    4    5    6    7    8
+        new char[]{ '■', '■', '■', '■', '■', '■', '■', '■', '■'},  // 1
+        new char[]{ '■', '■', '■', '■', '■', '■', '■', '■', '■'},  // 2
+        new char[]{ '■', '■', '■', '■', '■', '■', '■', '■', '■'},  // 3
+        new char[]{ '■', '■', '■', '■', '■', '■', '■', '■', '■'},  // 4
+        new char[]{ '■', '■', '■', '■', '■', '■', '■', '■', '■'},  // 5
+    };
+
+    public static readonly char[][] mapDoor =
+    {
+        //           0    1    2    3    4    5    6    7    8
+        new char[]{ '■', '□', '□', '■', '■', '■', '□', '□', '■'},  // 1
+        new char[]{ ' ', '□', '■', '□', '□', '□', '■', '□', '□'},  // 2
+        new char[]{ ' ', '□', '■', '□', ' ', '□', '■', '□', ' '},  // 3
+        new char[]{ ' ', '□', '■', '□', ' ', '□', '■', '□', ' '},  // 4
+        new char[]{ ' ', '□', '■', '□', ' ', '□', '■', '□', ' '},  // 5
+    };
+
     public static readonly char[][] mapTemplate =
     {
-        //           1    2    3    4    5    6    7    8    9
+        //           0    1    2    3    4    5    6    7    8
         new char[]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},  // 1
         new char[]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},  // 2
         new char[]{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},  // 3
@@ -40,6 +60,9 @@ public static class GlobalVars
     {
         {
             "key", mapKey
+        },
+        {
+            "door", mapDoor
         },
         {
             "template", mapTemplate

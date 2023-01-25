@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class RayCastingUI : MonoBehaviour
 {
+    [SerializeField] RayCasting casting;
     [SerializeField] GameObject[] rows;
+    [SerializeField] Sprite oSprite;
+    [SerializeField] Sprite xSprite;
 
-    Image[][] rayPoints;
 
-    string mapName = "key";
+    [SerializeField] GameObject nextTarget;
+    [SerializeField] Image nextTargetIcon;
+    [SerializeField] Sprite keySprite;
+    [SerializeField] Sprite doorSprite;
 
-    /*int r = 0;
-    int c = 0;
-    float t = 0;*/
+    public Image[][] rayPoints { get; private set; }
 
     void Awake()
     {
@@ -21,30 +24,8 @@ public class RayCastingUI : MonoBehaviour
         for (int i = 0; i < GlobalVars.rows; i++)
         {
             rayPoints[i] = rows[i].GetComponentsInChildren<Image>();
-            Debug.Log("Row: " + i + " Elements" + rayPoints[i].Length);
         }
         ConstructRayCastLayout();
-        //t = Time.time;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*if (c >= GlobalVars.columns)
-        {
-            c = 0;
-            r++;
-            r %= GlobalVars.rows;
-        }
-
-        rayPoints[r][c].color = Color.white;
-        
-        if(Time.time - t >= 0.5f)
-        {
-            rayPoints[r][c].color = Color.black;
-            c++;
-            t = Time.time;
-        }*/
     }
 
     public void EnableRayCastUI(bool enable)
@@ -54,31 +35,63 @@ public class RayCastingUI : MonoBehaviour
         {
             ConstructRayCastLayout();
         }
+        ShowTarget(!enable);
     }
 
     void ConstructRayCastLayout()
     {
+        string mapName = casting.targetMapName;
+        char[][] map;
         if (!GlobalVars.maps.ContainsKey(mapName))
         {
-            return;
+            //mapName = "template";
+            map = GlobalVars.mapTemplate;
+        }
+        else
+        {
+            map = GlobalVars.maps[mapName];
         }
 
         for (int i = 0; i < GlobalVars.rows; i++)
         {
             for (int j = 0; j < GlobalVars.columns; j++)
             {
-                if (GlobalVars.maps[mapName][i][j] == GlobalVars.boarderChar)
+                if (map[i][j] == GlobalVars.boarderChar)
                 {
+                    rayPoints[i][j].sprite = xSprite;
                     rayPoints[i][j].color = GlobalVars.rayPointWrongColor;
                 }
-                else if (GlobalVars.maps[mapName][i][j] == GlobalVars.rayPointChar)
+                else if (map[i][j] == GlobalVars.rayPointChar)
                 {
+                    rayPoints[i][j].sprite = oSprite;
                     rayPoints[i][j].color = GlobalVars.rayPointCorrectColor;
                 }
                 else
                 {
                     rayPoints[i][j].color = GlobalVars.rayPointNoneColor;
                 }
+            }
+        }
+    }
+
+    void ShowTarget(bool enabled)
+    {
+        nextTarget.SetActive(enabled);
+        if (enabled)
+        {
+            if (casting.targetMapName == "key")
+            {
+                nextTargetIcon.sprite = keySprite;
+            }
+            else if (casting.targetMapName == "door")
+            {
+                nextTargetIcon.sprite = doorSprite;
+            }
+            else
+            {
+                nextTargetIcon.sprite = null;
+                nextTargetIcon.enabled = false;
+                // Unlock Door
             }
         }
     }

@@ -48,21 +48,27 @@ public class PlayerController : MonoBehaviour
     {
         // Check if the player is grounded and allowed to move.
         // If so, allow for the player to input movement controls.
-        if (canMove && characterController.isGrounded)
+        if (characterController.isGrounded)
         {
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            float verticalInput = Input.GetAxisRaw("Vertical");
-
-            movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-            movementDirection = transform.TransformDirection(movementDirection);
-            movementDirection *= speed;
-
-            // If the player jumps, apply jump speed to player's movement
-            if (Input.GetButton("Jump"))
+            if (canMove)
             {
-                movementDirection.y = jumpSpeed;
-            }
+                float horizontalInput = Input.GetAxisRaw("Horizontal");
+                float verticalInput = Input.GetAxisRaw("Vertical");
 
+                movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+                movementDirection = transform.TransformDirection(movementDirection);
+                movementDirection *= speed;
+
+                // If the player jumps, apply jump speed to player's movement
+                if (Input.GetButton("Jump"))
+                {
+                    movementDirection.y = jumpSpeed;
+                }
+            }
+            else
+            {
+                movementDirection = Vector3.zero;
+            }
             // If the player is on a surface where the slope exceeds the maximum slope, 
             // push the player back to cause them to slide off
             if (!onStableGround)

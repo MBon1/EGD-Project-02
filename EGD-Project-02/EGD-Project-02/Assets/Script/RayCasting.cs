@@ -8,6 +8,12 @@ public class RayCasting : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] RayCastingUI rayCastUI;
 
+    [SerializeField] UnlockLock unlock;
+
+    [SerializeField] AudioSource sfx;
+    public AudioClip correct;
+    public AudioClip wrong;
+
     public string targetMapName = "key";
 
     // Start is called before the first frame update
@@ -16,7 +22,6 @@ public class RayCasting : MonoBehaviour
         camera.orthographic = false;
         playerController.canMove = true;
         rayCastUI.EnableRayCastUI(false);
-
     }
 
     // Update is called once per frame
@@ -32,6 +37,7 @@ public class RayCasting : MonoBehaviour
             if (CheckScreenPoint())
             {
                 Debug.Log("FOUND ITEM");
+                ChangeSFX(correct);
                 if (targetMapName == "key")
                 {
                     targetMapName = "door";
@@ -41,11 +47,14 @@ public class RayCasting : MonoBehaviour
                     if (targetMapName == "door")
                     {
                         targetMapName = "";
+                        StartCoroutine(unlock.UnlockDoor());
                     }
                 }
+                ChangePerspective();
             }
             else
             {
+                ChangeSFX(wrong);
                 Debug.Log("NO ITEM");
             }
         }
@@ -146,5 +155,9 @@ public class RayCasting : MonoBehaviour
         }
 
         return r.material;
+    }
+    public void ChangeSFX(AudioClip clip)
+    {
+        sfx.PlayOneShot(clip);
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UnlockLock : MonoBehaviour
 {
+    [SerializeField] Vector3 unlockedPosition = new Vector3(-6, 0, 0);
+    [SerializeField] float unlockAnimDuration = 0.5f;
+    [SerializeField] string destinationScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +20,25 @@ public class UnlockLock : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public IEnumerator UnlockDoor()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            // if Found Key
+        Vector3 initPos = this.transform.localPosition;
+        float elapsedTimed = 0;
 
+        while (elapsedTimed < unlockAnimDuration)
+        {
+            transform.localPosition = Vector3.Lerp(initPos, unlockedPosition, (elapsedTimed / unlockAnimDuration));
+            elapsedTimed += Time.deltaTime;
+            yield return null;
         }
+
+        elapsedTimed = 0;
+        while (elapsedTimed < unlockAnimDuration)
+        {
+            elapsedTimed += Time.deltaTime;
+            yield return null;
+        }
+
+        SceneController.LoadScene(destinationScene);
     }
 }

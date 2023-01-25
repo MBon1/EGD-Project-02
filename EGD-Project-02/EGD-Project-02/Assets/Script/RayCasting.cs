@@ -33,4 +33,18 @@ public class RayCasting : MonoBehaviour
         playerController.canMove = !playerController.canMove;
         rayCastUI.EnableRayCastUI(camera.orthographic);
     }
+
+    void RayCast()
+    {
+        Material correctMat = null;
+        List<Material> wrongMats = new List<Material>();
+
+        for(int i = 0; i < GlobalVars.rows; i++)
+        {
+            for (int j = 0; j < GlobalVars.columns; j++)
+            {
+
+            }
+        }
+    }
 }

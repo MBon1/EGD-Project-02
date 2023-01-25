@@ -15,13 +15,13 @@ public class RayCastingUI : MonoBehaviour
     int c = 0;
     float t = 0;*/
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rayPoints = new Image[GlobalVars.rows][];
         for (int i = 0; i < GlobalVars.rows; i++)
         {
             rayPoints[i] = rows[i].GetComponentsInChildren<Image>();
+            Debug.Log("Row: " + i + " Elements" + rayPoints[i].Length);
         }
         ConstructRayCastLayout();
         //t = Time.time;

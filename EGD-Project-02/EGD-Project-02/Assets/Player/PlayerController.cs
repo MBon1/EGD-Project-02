@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     Vector3 hitNormal;
 
+    public bool canMove = true;
+
     Vector3 movementDirection = Vector3.zero;   // Direction the player is moving
     [SerializeField] float speed = 5.5f;        // Player movement speed
     [SerializeField] float jumpSpeed = 4;       // Player jumping speed
@@ -44,8 +46,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if the player is grounded.  If so, allow for the player to input movement controls.
-        if (characterController.isGrounded)
+        // Check if the player is grounded and allowed to move.
+        // If so, allow for the player to input movement controls.
+        if (canMove && characterController.isGrounded)
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             float verticalInput = Input.GetAxisRaw("Vertical");

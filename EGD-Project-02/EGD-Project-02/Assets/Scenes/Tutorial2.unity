@@ -5344,7 +5344,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779742939}
-  m_Text: 'HINT: Sometimes, all you need is a litte
+  m_Text: 'HINT: Sometimes, all you need is a little
 
     change in perspective.'
   m_OffsetZ: 0
@@ -14176,7 +14176,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6124939498342036923, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
       propertyPath: destinationScene
-      value: End
+      value: Main
       objectReference: {fileID: 0}
     - target: {fileID: 6124939498540494874, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
       propertyPath: m_RootOrder

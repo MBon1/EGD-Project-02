@@ -33,7 +33,7 @@ public class UnlockLock : MonoBehaviour
         }
 
         elapsedTimed = 0;
-        while (elapsedTimed < unlockAnimDuration)
+        while (elapsedTimed < unlockAnimDuration / 2.0f)
         {
             elapsedTimed += Time.deltaTime;
             yield return null;

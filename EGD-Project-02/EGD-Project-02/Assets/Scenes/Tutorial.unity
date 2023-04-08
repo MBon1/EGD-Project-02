@@ -874,10 +874,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1965831f7904d0e4db90b6a720b52c6c, type: 2}
-    - target: {fileID: 6124939498914037290, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6124939498914037293, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
       propertyPath: destinationScene
       value: Tutorial2
@@ -3009,6 +3005,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3375284860347672821, guid: 3ea64791064d69f4589fa9cea39fd8fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6204775880651421518, guid: 3ea64791064d69f4589fa9cea39fd8fa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4427,8 +4427,8 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038613499}
-  m_Text: "HINT: Found what you're looking for? \nWhip out your camera, \nput it
-    in frame, \nand CLICK!"
+  m_Text: "HINT: Found what you're looking for? \nPull out your camera with \"Shift\",
+    \nframe your subject, \nand CLICK!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

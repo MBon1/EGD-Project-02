@@ -8,6 +8,11 @@ public class DoorTransision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        TransitionScene();
+    }
+
+    public void TransitionScene()
+    {
         SceneController.LoadScene(destinationScene);
         Debug.Log(destinationScene);
     }

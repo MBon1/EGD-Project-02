@@ -39,6 +39,6 @@ public class UnlockLock : MonoBehaviour
             yield return null;
         }
 
-        SceneController.LoadScene(destinationScene);
+        //SceneController.LoadScene(destinationScene);
     }
 }

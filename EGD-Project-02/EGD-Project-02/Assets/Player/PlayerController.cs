@@ -60,10 +60,10 @@ public class PlayerController : MonoBehaviour
                 movementDirection *= speed;
 
                 // If the player jumps, apply jump speed to player's movement
-                if (Input.GetButton("Jump"))
+                /*if (Input.GetButton("Jump"))
                 {
                     movementDirection.y = jumpSpeed;
-                }
+                }*/
             }
             else
             {
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             if (!onStableGround)
             {
                 float slopeAngle = 1f - hitNormal.y;
-                float pushBackSpeed = (gravitySpeed / 3 * 2 * slopeAngle);
+                float pushBackSpeed = -(Physics.gravity.y / 3 * 2 * slopeAngle);
                 movementDirection.x += slopeAngle * hitNormal.x * pushBackSpeed;
                 movementDirection.z += slopeAngle * hitNormal.z * pushBackSpeed;
             }
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apply Gravity
-        movementDirection.y -= gravitySpeed * Time.deltaTime;
+        movementDirection.y += Physics.gravity.y * Time.deltaTime;
         // Move the player
         characterController.Move(movementDirection * speed * Time.deltaTime);
 
@@ -113,7 +113,10 @@ public class PlayerController : MonoBehaviour
         if (hit != null)
         {
             string hitTag = hit.gameObject.tag;
-
+            /*if (hit.gameObject.CompareTag("Door"))
+            {
+                Debug.Log("DOOR HIT!");
+            }*/
             /*// If the player hit a projectile spawner, restock the player's projectiles
             if (hitTag == "ProjectileSpawner")
             {
@@ -175,5 +178,14 @@ public class PlayerController : MonoBehaviour
             }
         }*/
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            Debug.Log("DOOR HIT 2!");
+            other.gameObject.GetComponent<DoorTransision>().TransitionScene();
+        }
+    }
+
 }

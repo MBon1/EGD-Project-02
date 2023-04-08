@@ -5344,9 +5344,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779742939}
-  m_Text: 'HINT: Sometimes, all you need is a little
-
-    change in perspective.'
+  m_Text: "HINT: Sometimes, all you need is a \nchange in perspective."
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -14225,6 +14223,10 @@ PrefabInstance:
     - target: {fileID: 6124939498540494875, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
       propertyPath: m_Name
       value: Lock
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124939498914037293, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
+      propertyPath: destinationScene
+      value: Main
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4362037b187c0e7498b4dbe3e1db8d36, type: 3}
